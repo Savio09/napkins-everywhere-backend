@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "entries",
+  "info": {
+    "singularName": "entry",
+    "pluralName": "entries",
+    "displayName": "Entry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "media_files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "magazine": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::magazine.magazine",
+      "inversedBy": "entries"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "category": {
+      "type": "string"
+    },
+    "content_type": {
+      "type": "enumeration",
+      "enum": [
+        "text_only",
+        "images_only",
+        "images_and_text",
+        "mixed_media"
+      ],
+      "default": "text_only",
+      "required": true
+    },
+    "is_slide_show": {
+      "type": "boolean"
+    }
+  }
+}

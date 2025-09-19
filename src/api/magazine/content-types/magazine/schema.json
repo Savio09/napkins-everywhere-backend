@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "magazines",
+  "info": {
+    "singularName": "magazine",
+    "pluralName": "magazines",
+    "displayName": "magazine",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "issue_number": {
+      "type": "string",
+      "required": true
+    },
+    "cover_img": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "issue_number"
+    },
+    "entries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::entry.entry",
+      "mappedBy": "magazine"
+    },
+    "issue_title": {
+      "type": "string",
+      "required": true
+    },
+    "pdf_link": {
+      "type": "string",
+      "required": false
+    },
+    "epub_link": {
+      "type": "string",
+      "required": false
+    }
+  }
+}
